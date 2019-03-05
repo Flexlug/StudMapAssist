@@ -5,8 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StudMapAssist"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" KeyDown="Window_KeyDown">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MaxWidth="100"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Background="WhiteSmoke" Grid.Column="0" Panel.ZIndex="1">
+            <TextBlock x:Name="XCordView" Text="X:"/>
+            <TextBlock x:Name="YCordView" Text="Y:"/>
+        </StackPanel>
+
+        <StackPanel x:Name="MapPanel" Grid.Column="1">
+            <Image Grid.Column="1" x:Name="MapViewer" MouseWheel="MapViewer_MouseWheel" MouseMove="MapViewer_MouseMove" Panel.ZIndex="0"/>
+        </StackPanel>
     </Grid>
 </Window>
+
+    
