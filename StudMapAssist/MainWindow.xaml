@@ -5,22 +5,50 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StudMapAssist"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" KeyDown="Window_KeyDown">
+        Title="StudMapAssist" Height="450" Width="800" KeyDown="Window_KeyDown">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition MaxWidth="100"/>
+            <ColumnDefinition MaxWidth="150"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Background="WhiteSmoke" Grid.Column="0" Panel.ZIndex="1">
-            <TextBlock x:Name="XCordView" Text="X:"/>
-            <TextBlock x:Name="YCordView" Text="Y:"/>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition MaxHeight="30"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Background="WhiteSmoke" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Panel.ZIndex="1">
+            <Button x:Name="FirstPointButton" Content="Set first point" Click="InitFirstPointInput"/>
+            <TextBlock x:Name="FirstPointXCordView" Text="X: -"/>
+            <TextBlock x:Name="FirstPointYCordView" Text="Y: -"/>
+
+            <Button x:Name="SecondPointButton" Margin="0, 10, 0, 0" Content="Set second point" Click="InitSecondPointInput"/>
+            <TextBlock x:Name="SecondPointXCordView" Text="X: -"/>
+            <TextBlock x:Name="SecondPointYCordView" Text="Y: -"/>
+
+            <TextBlock x:Name="DistanceView" Text="Distance: " Margin="0, 10, 0, 0"/>
         </StackPanel>
 
-        <StackPanel x:Name="MapPanel" Grid.Column="1">
+        <StackPanel x:Name="MapPanel" Grid.Column="1" Grid.Row="0" MouseRightButtonDown="MapPanel_MouseRightButtonDown">
             <Image Grid.Column="1" x:Name="MapViewer" MouseWheel="MapViewer_MouseWheel" MouseMove="MapViewer_MouseMove" Panel.ZIndex="0"/>
         </StackPanel>
+
+        <Grid Grid.Column="1" Grid.Row="1" Background="WhiteSmoke">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock x:Name="ProgramStatus" Text="Waiting for commands..." HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+            <StackPanel x:Name="StatusPanel" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">                
+                <TextBlock x:Name="XCordView" Text="X:"/>
+                <TextBlock x:Name="YCordView" Text="Y:"/>
+            </StackPanel>
+        </Grid>
+
+
+        <Button x:Name="CenterMap" Grid.Column="0" Grid.Row="1" Panel.ZIndex="3" Content="Normalize map" Click="CenterMap_Click" Width="100" Height="25"/>
+
     </Grid>
 </Window>
-
-    
