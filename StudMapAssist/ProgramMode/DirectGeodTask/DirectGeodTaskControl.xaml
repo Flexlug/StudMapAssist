@@ -1,0 +1,53 @@
+﻿<Page x:Class="StudMapAssist.ProgramMode.DirectGeodTask.DirectGeodTaskControl"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StudMapAssist.ProgramMode.DirectGeodTask"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="150"
+      Background="White"
+      Title="DirectGeodTaskControl">
+    
+    <Page.Resources>
+        <ContextMenu x:Key="rmbMenu">
+            <MenuItem Header="Установить точку A" Click="InitPointAInput"/>
+            <MenuItem Header="Установить точку B" Click="InitPointBInput"/>
+            <MenuItem Header="Установить точку C" Click="InitPointCInput"/>
+            <Separator/>
+            <MenuItem Header="Очистить точки" Click="ClearPoints"/>
+        </ContextMenu>
+    </Page.Resources>
+    
+    <StackPanel>
+        <TextBlock Text="Точки на карте:"/>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock x:Name="APointHint" Text="Точка А:"/>
+            <Button Content="Задать" Width="75" Margin="10, 0, 0, 0" Click="InitPointAInput"/>
+        </StackPanel>        
+        <TextBlock x:Name="PointAXCord" Text="X: "/>
+        <TextBlock x:Name="PointAYCord" Text="Y: " Margin="0, 0, 0, 10"/>
+        
+        <StackPanel Orientation="Horizontal">
+            <TextBlock x:Name="BPointHint" Text="Точка B:"/>
+            <Button Content="Задать" Width="75" Margin="10, 0, 0, 0" Click="InitPointBInput"/>
+        </StackPanel>
+        <TextBlock x:Name="PointBXCord" Text="X: "/>
+        <TextBlock x:Name="PointBYCord" Text="Y: " Margin="0, 0, 0, 10"/>
+
+        <StackPanel Orientation="Horizontal">            
+            <TextBlock x:Name="CPointHint" Text="Точка C:"/>
+            <Button Content="Задать" Width="75" Margin="10, 0, 0, 0" Click="InitPointCInput"/>
+        </StackPanel>
+        <TextBlock x:Name="PointCXCord" Text="X: "/>
+        <TextBlock x:Name="PointCYCord" Text="Y: " Margin="0, 0, 0, 10"/>
+
+        <Button Height="50" Click="InitStudentCalculationsInput" Margin="5">
+            <TextBlock Text="Ввести расчёты" TextWrapping="Wrap" TextAlignment="Center"/>
+        </Button>
+        <TextBlock x:Name="HaveStudentCalculationsTB" Text="Рассчёты не введены" Margin="5" Foreground="Red"/>
+        <Button Height="50" Click="InitDifferenceCalculation" Margin="5">
+            <TextBlock Text="Отобразить разницу в вычислениях" TextWrapping="Wrap" TextAlignment="Center" IsEnabled="False"/>
+        </Button>
+    </StackPanel>
+</Page>

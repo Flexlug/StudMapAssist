@@ -10,8 +10,8 @@ namespace StudMapAssist
     public static class GeodCalculations
     {
         // Константа, которая позволяет переводить пиксели в метры
-        public static double PixelScale = 3.07;
-        
+        public static double PixelScale = 1.2698412698412698412698412698413;
+
         public static double CalcLength(Point fstPoint, Point sndPoint)
         {
             // Вычисляем разницу в координатах между точками

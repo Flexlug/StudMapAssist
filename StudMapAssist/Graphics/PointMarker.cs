@@ -8,9 +8,9 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
-namespace StudMapAssist
+namespace StudMapAssist.Graphics
 {
-    public class PointMarker
+    class PointMarker
     {
         TransformGroup controlMarker = new TransformGroup()
         {
@@ -19,11 +19,11 @@ namespace StudMapAssist
                 new ScaleTransform(),
                 new TranslateTransform()
             }
-        };        
+        };
 
         Path markerFigure = new Path()
         {
-            Fill = Brushes.AliceBlue,
+            Fill = Brushes.Transparent,
             Stroke = Brushes.Blue,
             Data = new GeometryGroup()
             {
@@ -38,15 +38,21 @@ namespace StudMapAssist
             Opacity = 1
         };
 
+        public bool IsVisible
+        {
+            get => markerFigure.Opacity == 1;
+            private set { }
+        }
+
         public TranslateTransform GetMarkerMove() => controlMarker.Children[1] as TranslateTransform;
         public ScaleTransform GetMarkerScale() => controlMarker.Children[0] as ScaleTransform;
 
-        public void SetLocation(double x, double y)
+        public void SetLocation(Point p)
         {
             TranslateTransform markerMove = GetMarkerMove();
 
-            markerMove.X = x;
-            markerMove.Y = y;
+            markerMove.X = p.X;
+            markerMove.Y = p.Y;
         }
 
         public void ZoomIn(double scale)
@@ -85,6 +91,11 @@ namespace StudMapAssist
             markerFigure.Opacity = 0;
         }
 
+        public Path GetPath()
+        {
+            return markerFigure;
+        }
+
         public PointMarker(Panel newParent, double x, double y)
         {
             markerFigure.RenderTransform = controlMarker;
@@ -94,3 +105,4 @@ namespace StudMapAssist
         }
     }
 }
+
