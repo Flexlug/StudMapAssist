@@ -71,6 +71,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="DebugWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MapWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -79,8 +83,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DebugWindow.xaml.cs">
+      <DependentUpon>DebugWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Graphics\DistanceLine.cs" />
-    <Compile Include="GeodCalculations.cs" />
+    <Compile Include="ProgramMode\DirectGeodTask\Angle.cs" />
+    <Compile Include="ProgramMode\DirectGeodTask\DirectGeodCalculations.cs" />
+    <Compile Include="ProgramMode\DistanceMeasure\GeodCalculations.cs" />
     <Compile Include="Graphics\PointMarker.cs" />
     <Compile Include="Graphics\ScreenCross.cs" />
     <Compile Include="MapWindow.xaml.cs">

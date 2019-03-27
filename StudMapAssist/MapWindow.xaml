@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StudMapAssist"
         mc:Ignorable="d"
-        Title="StudMapAssist" Height="450" Width="800" KeyDown="Window_KeyDown" Loaded="Window_Loaded">
+        Title="StudMapAssist" Height="450" Width="800" KeyDown="Window_KeyDown" Loaded="Window_Loaded" Closing="Window_Closing">
     
     <Grid>
         <Grid.ColumnDefinitions>

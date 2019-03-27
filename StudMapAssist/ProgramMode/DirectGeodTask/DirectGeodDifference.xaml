@@ -5,8 +5,173 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StudMapAssist.ProgramMode.DirectGeodTask"
         mc:Ignorable="d"
-        Title="DirectGeodDifference" Height="450" Width="800">
-    <Grid>
-        
+        Title="DirectGeodDifference" Height="450" Width="950"
+        ResizeMode="NoResize">
+
+    <Grid ShowGridLines="True">
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <Grid ShowGridLines="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="350"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0" ShowGridLines="True">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Точки" Grid.Row="0" Grid.Column="0" FontSize="20"/>
+                <TextBlock TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Text="А" Grid.Row="1" Grid.Column="0" FontSize="30"/>
+                <TextBlock TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Text="B" Grid.Row="2" Grid.Column="0" FontSize="30"/>
+                <TextBlock TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Text="C" Grid.Row="3" Grid.Column="0" FontSize="30"/>
+                <TextBlock TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Text="A" Grid.Row="4" Grid.Column="0" FontSize="30"/>
+            </Grid>
+
+            <Grid Grid.Column="1" ShowGridLines="True">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontSize="30">
+                <Run FontSize="25" Text="α"/>
+                <Run FontSize="13" FontStyle="Italic" Text="i"/>
+                </TextBlock>
+                <TextBlock Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontSize="30">
+                <Run FontSize="25" Text="S"/>
+                <Run FontSize="13" FontStyle="Italic" Text="i"/>
+                <Run FontSize="18" Text=", м"/>
+                </TextBlock>
+                <TextBlock Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontSize="30">                
+                <Run FontSize="25" Text="ΔX"/>
+                <Run FontSize="13" FontStyle="Italic" Text="i"/>
+                <Run FontSize="18" Text=", м"/>
+                </TextBlock>
+                <TextBlock Grid.Column="3" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontSize="30">                
+                <Run FontSize="25" Text="ΔY"/>
+                <Run FontSize="13" FontStyle="Italic" Text="i"/>
+                <Run FontSize="18" Text=", м"/>
+                </TextBlock>
+
+                <TextBlock x:Name="Angle1" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Text="angle1"/>
+                <TextBlock x:Name="Angle2" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Text="angle2"/>
+                <TextBlock x:Name="Angle3" Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" Text="angle3"/>
+
+                <TextBlock x:Name="Dist1" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Text="dist1"/>
+                <TextBlock x:Name="Dist2" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Text="dist2"/>
+                <TextBlock x:Name="Dist3" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" Text="dist3"/>
+
+                <TextBlock x:Name="DeltaX1" Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Text="deltaX1"/>
+                <TextBlock x:Name="DeltaX2" Grid.Column="2" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Text="deltaX2"/>
+                <TextBlock x:Name="DeltaX3" Grid.Column="2" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" Text="deltaX3"/>
+
+                <TextBlock x:Name="DeltaY1" Grid.Column="3" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Text="deltaY1"/>
+                <TextBlock x:Name="DeltaY2" Grid.Column="3" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Text="deltaY2"/>
+                <TextBlock x:Name="DeltaY3" Grid.Column="3" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" Text="deltaY3"/>
+            </Grid>
+
+            <Grid Grid.Column="2" ShowGridLines="True">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+
+                <TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontSize="30">                
+                <Run FontSize="25" Text="X"/>
+                <Run FontSize="13" FontStyle="Italic" Text="выч"/>
+                <Run FontSize="18" Text=", м"/>
+                </TextBlock>
+
+                <TextBlock Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontSize="30">                
+                <Run FontSize="25" Text="Y"/>
+                <Run FontSize="13" FontStyle="Italic" Text="выч"/>
+                <Run FontSize="18" Text=", м"/>
+                </TextBlock>
+
+                <TextBlock Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontSize="30">                
+                <Run FontSize="25" Text="X"/>
+                <Run FontSize="13" FontStyle="Italic" Text="изм"/>
+                <Run FontSize="18" Text=", м"/>
+                </TextBlock>
+
+                <TextBlock Grid.Column="3" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontSize="30">                
+                <Run FontSize="25" Text="Y"/>
+                <Run FontSize="13" FontStyle="Italic" Text="изм"/>
+                <Run FontSize="18" Text=", м"/>
+                </TextBlock>
+
+                <TextBlock Grid.Column="4" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontSize="30">                   
+                <Run FontSize="25" Text="ΔX"/>
+                <Run FontSize="13" FontStyle="Italic" Text="i"/>
+                </TextBlock>
+
+                <TextBlock Grid.Column="5" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontSize="30">                
+                <Run FontSize="25" Text="ΔY"/>
+                <Run FontSize="13" FontStyle="Italic" Text="i"/>
+                </TextBlock>
+
+                <TextBlock x:Name="CalcedX1" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Text="CalcedX1" TextWrapping="Wrap"/>
+                <TextBlock x:Name="CalcedX2" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Text="CalcedX2" TextWrapping="Wrap"/>
+                <TextBlock x:Name="CalcedX3" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Text="CalcedX3" TextWrapping="Wrap"/>
+
+                <TextBlock x:Name="CalcedY1" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Text="CalcedY1" TextWrapping="Wrap"/>
+                <TextBlock x:Name="CalcedY2" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Text="CalcedY2" TextWrapping="Wrap"/>
+                <TextBlock x:Name="CalcedY3" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Text="CalcedY3" TextWrapping="Wrap"/>
+
+                <TextBlock x:Name="MeasuredX1" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Text="MeasuredX1" TextWrapping="Wrap"/>
+                <TextBlock x:Name="MeasuredX2" Grid.Column="2" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Text="MeasuredX2" TextWrapping="Wrap"/>
+                <TextBlock x:Name="MeasuredX3" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Text="MeasuredX3" TextWrapping="Wrap"/>
+
+                <TextBlock x:Name="MeasuredY1" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Text="MeasuredY1" TextWrapping="Wrap"/>
+                <TextBlock x:Name="MeasuredY2" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Text="MeasuredY2" TextWrapping="Wrap"/>
+                <TextBlock x:Name="MeasuredY3" Grid.Column="3" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Text="MeasuredY3" TextWrapping="Wrap"/>
+
+                <TextBlock x:Name="DiffX1" Grid.Column="4" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Text="DiffX1" TextWrapping="Wrap"/>
+                <TextBlock x:Name="DiffX2" Grid.Column="4" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Text="DiffX2" TextWrapping="Wrap"/>
+                <TextBlock x:Name="DiffX3" Grid.Column="4" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Text="DiffX3" TextWrapping="Wrap"/>
+
+                <TextBlock x:Name="DiffY1" Grid.Column="5" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Text="DiffY1" TextWrapping="Wrap"/>
+                <TextBlock x:Name="DiffY2" Grid.Column="5" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Text="DiffY2" TextWrapping="Wrap"/>
+                <TextBlock x:Name="DiffY3" Grid.Column="5" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Text="DiffY3" TextWrapping="Wrap"/>
+            </Grid>
+        </Grid>
+
+        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1" Orientation="Horizontal">
+            <Button x:Name="SubmitInput" Content="OK" FontSize="15" Width="100" Click="SubmitInput_Click" Margin="0, 10, 20, 10"/>
+        </StackPanel>
     </Grid>
-</Window>
+</Window>   

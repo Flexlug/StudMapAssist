@@ -33,21 +33,21 @@ namespace StudMapAssist.ProgramMode.DirectGeodTask
         // Треугольник, который построен по координатам, которые ввёл студент
         // Все переменные аналогичны, только имеют приписку Stud
 
-        private Point studAPoint = new Point(double.MaxValue, double.MaxValue);
-        private Point studBPoint = new Point(double.MaxValue, double.MaxValue);
-        private Point studCPoint = new Point(double.MaxValue, double.MaxValue);
+        //private Point studAPoint = new Point(double.MaxValue, double.MaxValue);
+        //private Point studBPoint = new Point(double.MaxValue, double.MaxValue);
+        //private Point studCPoint = new Point(double.MaxValue, double.MaxValue);
 
-        private PointMarker studAPointMarker;
-        private PointMarker studBPointMarker;
-        private PointMarker studCPointMarker;
+        //private PointMarker studAPointMarker;
+        //private PointMarker studBPointMarker;
+        //private PointMarker studCPointMarker;
 
-        private DistanceLine studABDistanceLine;
-        private DistanceLine studBCDistanceLine;
-        private DistanceLine studCADistanceLine;
+        //private DistanceLine studABDistanceLine;
+        //private DistanceLine studBCDistanceLine;
+        //private DistanceLine studCADistanceLine;
 
-        private SolidColorBrush STUD_A_POINT_MARKER_BRUSH = Brushes.PaleVioletRed;
-        private SolidColorBrush STUD_B_POINT_MARKER_BRUSH = Brushes.LightGreen;
-        private SolidColorBrush STUD_C_POINT_MARKER_BRUSH = Brushes.BlueViolet;
+        //private SolidColorBrush STUD_A_POINT_MARKER_BRUSH = Brushes.PaleVioletRed;
+        //private SolidColorBrush STUD_B_POINT_MARKER_BRUSH = Brushes.LightGreen;
+        //private SolidColorBrush STUD_C_POINT_MARKER_BRUSH = Brushes.BlueViolet;
 
         #endregion
 
@@ -73,7 +73,7 @@ namespace StudMapAssist.ProgramMode.DirectGeodTask
         /// <summary>
         /// Точка А, выставленная на карте
         /// </summary>
-        private Point APoint = new Point(double.MaxValue, double.MaxValue);
+        public Point APoint = new Point(double.MaxValue, double.MaxValue);
 
         /// <summary>
         /// Маркер точки А
@@ -89,7 +89,7 @@ namespace StudMapAssist.ProgramMode.DirectGeodTask
         /// <summary>
         /// Точка B, выставленная на карте
         /// </summary>
-        private Point BPoint = new Point(double.MaxValue, double.MaxValue);
+        public Point BPoint = new Point(double.MaxValue, double.MaxValue);
 
         /// <summary>
         /// Маркер точки B
@@ -105,7 +105,7 @@ namespace StudMapAssist.ProgramMode.DirectGeodTask
         /// <summary>
         /// Точка C, выставленная на карте
         /// </summary>
-        private Point CPoint = new Point(double.MaxValue, double.MaxValue);
+        public Point CPoint = new Point(double.MaxValue, double.MaxValue);
 
         /// <summary>
         /// Маркер точки С
@@ -139,7 +139,7 @@ namespace StudMapAssist.ProgramMode.DirectGeodTask
         /// <summary>
         /// Окно, в которое студент должен будет ввести все высчитанные значения
         /// </summary>
-        MeasuredDirectGeodInput studentCalculations;
+        MeasuredDirectGeodInput studentCalculations = null;
 
 
 
@@ -152,6 +152,13 @@ namespace StudMapAssist.ProgramMode.DirectGeodTask
         /// Делегат, который передаётся главному окну
         /// </summary>
         MouseButtonEventHandler mouseRMBHandler;
+
+
+
+        /// <summary>
+        /// Контестное меню, которое вызывается по нажатию правой кнопки мыши
+        /// </summary>
+        private ContextMenu rmbMenu;
 
 
         public DirectGeodTaskControl(MapWindow w)
@@ -181,17 +188,17 @@ namespace StudMapAssist.ProgramMode.DirectGeodTask
             CPointMarker.SetStrokeColor(C_POINT_COLOR_BRUSH);
             CPointMarker.Hide();
 
-            studAPointMarker = new PointMarker(mapWindow.MapPanel, 0, 0);
-            studAPointMarker.SetStrokeColor(STUD_A_POINT_MARKER_BRUSH);
-            studAPointMarker.Hide();
+            //studAPointMarker = new PointMarker(mapWindow.MapPanel, 0, 0);
+            //studAPointMarker.SetStrokeColor(STUD_A_POINT_MARKER_BRUSH);
+            //studAPointMarker.Hide();
 
-            studBPointMarker = new PointMarker(mapWindow.MapPanel, 0, 0);
-            studBPointMarker.SetStrokeColor(STUD_B_POINT_MARKER_BRUSH);
-            studBPointMarker.Hide();
+            //studBPointMarker = new PointMarker(mapWindow.MapPanel, 0, 0);
+            //studBPointMarker.SetStrokeColor(STUD_B_POINT_MARKER_BRUSH);
+            //studBPointMarker.Hide();
 
-            studCPointMarker = new PointMarker(mapWindow.MapPanel, 0, 0);
-            studCPointMarker.SetStrokeColor(STUD_C_POINT_MARKER_BRUSH);
-            studCPointMarker.Hide();
+            //studCPointMarker = new PointMarker(mapWindow.MapPanel, 0, 0);
+            //studCPointMarker.SetStrokeColor(STUD_C_POINT_MARKER_BRUSH);
+            //studCPointMarker.Hide();
 
             // Выставим соответствующий цвет шрифтов, чтобы маркеры на карте можно было отличить друг от друга
             APointHint.Foreground = A_POINT_MARKER_BRUSH;
@@ -206,12 +213,15 @@ namespace StudMapAssist.ProgramMode.DirectGeodTask
             CADistanceLine = new DistanceLine(mapWindow.MapPanel, C_POINT_COLOR_BRUSH, A_POINT_MARKER_BRUSH);
             CADistanceLine.Hide();
 
-            studABDistanceLine = new DistanceLine(mapWindow.MapPanel, STUD_A_POINT_MARKER_BRUSH, STUD_B_POINT_MARKER_BRUSH);
-            studABDistanceLine.Hide();
-            studBCDistanceLine = new DistanceLine(mapWindow.MapPanel, STUD_B_POINT_MARKER_BRUSH, STUD_C_POINT_MARKER_BRUSH);
-            studBCDistanceLine.Hide();
-            studCADistanceLine = new DistanceLine(mapWindow.MapPanel, STUD_C_POINT_MARKER_BRUSH, STUD_A_POINT_MARKER_BRUSH);
-            studCADistanceLine.Hide();
+            //studABDistanceLine = new DistanceLine(mapWindow.MapPanel, STUD_A_POINT_MARKER_BRUSH, STUD_B_POINT_MARKER_BRUSH);
+            //studABDistanceLine.Hide();
+            //studBCDistanceLine = new DistanceLine(mapWindow.MapPanel, STUD_B_POINT_MARKER_BRUSH, STUD_C_POINT_MARKER_BRUSH);
+            //studBCDistanceLine.Hide();
+            //studCADistanceLine = new DistanceLine(mapWindow.MapPanel, STUD_C_POINT_MARKER_BRUSH, STUD_A_POINT_MARKER_BRUSH);
+            //studCADistanceLine.Hide();
+
+            rmbMenu = this.FindResource("rmbMenu") as ContextMenu;
+            rmbMenu.PlacementTarget = mapWindow.MainPanel;
         }
 
         /// <summary>
@@ -228,13 +238,20 @@ namespace StudMapAssist.ProgramMode.DirectGeodTask
             mapWindow.MapPanel.Children.Remove(ABDistanceLine.GetPath());
             mapWindow.MapPanel.Children.Remove(BCDistanceLine.GetPath());
             mapWindow.MapPanel.Children.Remove(CADistanceLine.GetPath());
-            mapWindow.MapPanel.Children.Remove(studAPointMarker.GetPath());
-            mapWindow.MapPanel.Children.Remove(studBPointMarker.GetPath());
-            mapWindow.MapPanel.Children.Remove(studCPointMarker.GetPath());
-            mapWindow.MapPanel.Children.Remove(studABDistanceLine.GetPath());
-            mapWindow.MapPanel.Children.Remove(studBCDistanceLine.GetPath());
-            mapWindow.MapPanel.Children.Remove(studCADistanceLine.GetPath());
+            //mapWindow.MapPanel.Children.Remove(studAPointMarker.GetPath());
+            //mapWindow.MapPanel.Children.Remove(studBPointMarker.GetPath());
+            //mapWindow.MapPanel.Children.Remove(studCPointMarker.GetPath());
+            //mapWindow.MapPanel.Children.Remove(studABDistanceLine.GetPath());
+            //mapWindow.MapPanel.Children.Remove(studBCDistanceLine.GetPath());
+            //mapWindow.MapPanel.Children.Remove(studCADistanceLine.GetPath());
 
+            if (studentCalculations != null)
+            {
+                if (studentCalculations.geodDiff != null)
+                    studentCalculations.geodDiff.Close();
+
+                studentCalculations.Close();
+            }
             mapWindow.CurrentModeControl.Resources.Remove(this);
         }
 
@@ -262,8 +279,9 @@ namespace StudMapAssist.ProgramMode.DirectGeodTask
                 APointMarker.Show();
 
                 // Отобразим координаты точки A
-                PointAXCord.Text = $"X: {APoint.X:f2}";
-                PointAYCord.Text = $"Y: {APoint.Y:f2}";
+                Point printingPoint = DirectGeodCalculations.PixelsToSquareCords(APoint);
+                PointAXCord.Text = $"X: {printingPoint.X:f0}";
+                PointAYCord.Text = $"Y: {printingPoint.Y:f0}";
 
                 // Уберём перекрестие
                 mapWindow.screenCross.Hide();
@@ -283,8 +301,9 @@ namespace StudMapAssist.ProgramMode.DirectGeodTask
                 BPointMarker.Show();
 
                 // Отобразим координаты точки A
-                PointBXCord.Text = $"X: {BPoint.X:f2}";
-                PointBYCord.Text = $"Y: {BPoint.Y:f2}";
+                Point printingPoint = DirectGeodCalculations.PixelsToSquareCords(BPoint);
+                PointBXCord.Text = $"X: {printingPoint.X:f0}";
+                PointBYCord.Text = $"Y: {printingPoint.Y:f0}";
 
                 // Уберём перекрестие
                 mapWindow.screenCross.Hide();
@@ -304,8 +323,9 @@ namespace StudMapAssist.ProgramMode.DirectGeodTask
                 CPointMarker.Show();
 
                 // Отобразим координаты точки A
-                PointCXCord.Text = $"X: {CPoint.X:f2}";
-                PointCYCord.Text = $"Y: {CPoint.Y:f2}";
+                Point printingPoint = DirectGeodCalculations.PixelsToSquareCords(CPoint);
+                PointCXCord.Text = $"X: {printingPoint.X:f0}";
+                PointCYCord.Text = $"Y: {printingPoint.Y:f0}";
 
                 // Уберём перекрестие
                 mapWindow.screenCross.Hide();
@@ -314,9 +334,9 @@ namespace StudMapAssist.ProgramMode.DirectGeodTask
                 mapWindow.SetStatus("Точка C установлена");
             }
 
-            // Отобразим получившийся треугольник
             if (APointMarker.IsVisible && BPointMarker.IsVisible && CPointMarker.IsVisible)
             {
+                // Отобразим получившийся треугольник
                 ABDistanceLine.SetPoints(APoint, BPoint);
                 BCDistanceLine.SetPoints(BPoint, CPoint);
                 CADistanceLine.SetPoints(CPoint, APoint);
@@ -324,6 +344,11 @@ namespace StudMapAssist.ProgramMode.DirectGeodTask
                 ABDistanceLine.Show();
                 BCDistanceLine.Show();
                 CADistanceLine.Show();
+
+                // Включим возможность ввести собственные рассчёты
+                HaveStudentCalculationsTB.Text = "Точки введены";
+                HaveStudentCalculationsTB.Foreground = Brushes.Green;
+                StartStudentInput.IsEnabled = true;
             }
         }
 
@@ -334,7 +359,11 @@ namespace StudMapAssist.ProgramMode.DirectGeodTask
         /// <param name="e"></param>
         public void MouseRMBDown(object sender, MouseButtonEventArgs e)
         {
-            throw new NotImplementedException();
+            // Если контекстное меню открыто, то закроем его, иначе же откроем его
+            if (rmbMenu.IsOpen)
+                rmbMenu.IsOpen = false;
+            else
+                rmbMenu.IsOpen = true;
         }
 
         public void UpdateScale(double newScale, bool zoomIn)
@@ -363,16 +392,25 @@ namespace StudMapAssist.ProgramMode.DirectGeodTask
             CPoint = new Point(double.MaxValue, double.MaxValue);
             if (CPointMarker.IsVisible)
                 CPointMarker.Hide();
+
+            ABDistanceLine.Hide();
+            BCDistanceLine.Hide();
+            CADistanceLine.Hide();
+
+            HaveStudentCalculationsTB.Text = "Введите точки на карте";
+            HaveStudentCalculationsTB.Foreground = Brushes.Red;
+            StartStudentInput.IsEnabled = false;
         }
 
         private void InitStudentCalculationsInput(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void InitDifferenceCalculation(object sender, RoutedEventArgs e)
-        {
-
+            if (studentCalculations == null)
+            {
+                studentCalculations = new MeasuredDirectGeodInput(mapWindow, this);
+                studentCalculations.Show();
+            }
+            else
+                studentCalculations.Show();
         }
 
         /// <summary>

@@ -25,6 +25,11 @@ namespace StudMapAssist
     /// </summary>
     public partial class MapWindow : Window
     {
+        /// <summary>
+        /// Количество метров в одном пикселе
+        /// </summary>
+        public const double MAP_SCALE = 1.2698412698412698412698412698413;
+
         private TransformGroup mapControl = new TransformGroup()
         {
             Children = { new TranslateTransform(), new ScaleTransform() }
@@ -41,6 +46,7 @@ namespace StudMapAssist
         private Point currentPosition;
 
         private Point mapPoint;
+        private Point mapPointInMeters { get => DirectGeodCalculations.PixelsToSquareCords(mapPoint); }
 
         private double ZoomLevel = 1;
 
@@ -149,17 +155,18 @@ namespace StudMapAssist
                 mapMove.Y -= (lastPosition.Y - currentPosition.Y) / (1.2 / (1 + ZoomLevel / 10));
             }
 
+            Point mapPointMeters = mapPointInMeters;
+
             if (screenCross.IsVisible)
             {
                 screenCross.SetLocation(currentPosition.X, currentPosition.Y);
-                screenCross.SetXCordValue(mapPoint.X);
-                screenCross.SetYCordValue(mapPoint.Y);
+                screenCross.SetCordValue(mapPointMeters);
             }
 
             lastPosition = currentPosition;
 
-            XCordView.Text = $"X: {mapPoint.X:f2}";
-            YCordView.Text = $"Y: {mapPoint.Y:f2}";
+            XCordView.Text = $"X: {mapPointMeters.X:f2}";
+            YCordView.Text = $"Y: {mapPointMeters.Y:f2}";
         }
 
         private void CenterMap_Click(object sender, RoutedEventArgs e)
@@ -184,6 +191,16 @@ namespace StudMapAssist
         private void ChangeMode_Click(object sender, RoutedEventArgs e)
         {
             (new ChangeProgramMode(this)).ShowDialog();
+        }
+
+        /// <summary>
+        /// При закрытии окна необходимо закрыть все спрятанные окна
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            currentMode.Dispose();
         }
     }
 }

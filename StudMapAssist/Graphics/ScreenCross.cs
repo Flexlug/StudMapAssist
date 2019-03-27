@@ -112,14 +112,10 @@ namespace StudMapAssist.Graphics
             crossMove.Y = y - screenHeight / 2;
         }
 
-        public void SetXCordValue(double x)
+        public void SetCordValue(Point cord)
         {
-            xCordViewer.Text = $"x: {x}";
-        }
-
-        public void SetYCordValue(double y)
-        {
-            yCordViewer.Text = $"y: {y}";
+            xCordViewer.Text = $"x: {cord.X:f0}";
+            yCordViewer.Text = $"y: {cord.Y:f0}";
         }
 
         public void Show()

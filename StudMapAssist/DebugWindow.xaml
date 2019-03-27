@@ -1,0 +1,20 @@
+﻿<Window x:Class="StudMapAssist.DebugWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StudMapAssist"
+        mc:Ignorable="d"
+        Title="DebugWindow" Height="450" Width="800">
+    
+    <StackPanel>
+        <TextBlock x:Name="xRatio" Text="xRatio" FontSize="20"/>
+        <TextBlock x:Name="yRatio" Text="yRatio" FontSize="20"/>
+        <TextBlock x:Name="xDifference" Text="xDifference" FontSize="20"/>
+        <TextBlock x:Name="yDifference" Text="yDifference"  FontSize="20"/>
+        <TextBlock x:Name="xCordBeforeCorrection" Text="xCordBeforeCorrection"  FontSize="20"/>
+        <TextBlock x:Name="xCordAfterCorrection" Text="xCordAfterCorrection"  FontSize="20"/>
+        <TextBlock x:Name="yCordBeforeCorrection" Text="yCordBeforeCorrection" FontSize="20"/>
+        <TextBlock x:Name="yCordAfterCorrection" Text="yCordAfterCorrection" FontSize="20"/>        
+    </StackPanel>
+</Window>

@@ -42,12 +42,9 @@
         <TextBlock x:Name="PointCXCord" Text="X: "/>
         <TextBlock x:Name="PointCYCord" Text="Y: " Margin="0, 0, 0, 10"/>
 
-        <Button Height="50" Click="InitStudentCalculationsInput" Margin="5">
+        <Button x:Name="StartStudentInput" Height="50" Click="InitStudentCalculationsInput" Margin="5" IsEnabled="False">
             <TextBlock Text="Ввести расчёты" TextWrapping="Wrap" TextAlignment="Center"/>
         </Button>
-        <TextBlock x:Name="HaveStudentCalculationsTB" Text="Рассчёты не введены" Margin="5" Foreground="Red"/>
-        <Button Height="50" Click="InitDifferenceCalculation" Margin="5">
-            <TextBlock Text="Отобразить разницу в вычислениях" TextWrapping="Wrap" TextAlignment="Center" IsEnabled="False"/>
-        </Button>
+        <TextBlock x:Name="HaveStudentCalculationsTB" Text="Введите точки на карте" Margin="5" Foreground="Red" TextWrapping="Wrap"/>
     </StackPanel>
 </Page>

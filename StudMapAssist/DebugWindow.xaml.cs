@@ -12,21 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace StudMapAssist.ProgramMode.DirectGeodTask
+namespace StudMapAssist
 {
     /// <summary>
-    /// Логика взаимодействия для DirectGeodDifference.xaml
+    /// Логика взаимодействия для DebugWindow.xaml
     /// </summary>
-    public partial class DirectGeodDifference : Window
+    public partial class DebugWindow : Window
     {
-        public DirectGeodDifference()
+        public DebugWindow()
         {
-            InitializeComponent();
-        }
-
-        private void SubmitInput_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
+            InitializeComponent();            
         }
     }
 }
