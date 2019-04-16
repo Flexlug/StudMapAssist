@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:StudMapAssist.ProgramMode.DirectGeodTask"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="150"
-      Background="White"
+      Background="Transparent"
       Title="DirectGeodTaskControl">
     
     <Page.Resources>
@@ -18,33 +18,36 @@
             <MenuItem Header="Очистить точки" Click="ClearPoints"/>
         </ContextMenu>
     </Page.Resources>
-    
-    <StackPanel>
-        <TextBlock Text="Точки на карте:"/>
-        <StackPanel Orientation="Horizontal">
-            <TextBlock x:Name="APointHint" Text="Точка А:"/>
-            <Button Content="Задать" Width="75" Margin="10, 0, 0, 0" Click="InitPointAInput"/>
-        </StackPanel>        
-        <TextBlock x:Name="PointAXCord" Text="X: "/>
-        <TextBlock x:Name="PointAYCord" Text="Y: " Margin="0, 0, 0, 10"/>
-        
-        <StackPanel Orientation="Horizontal">
-            <TextBlock x:Name="BPointHint" Text="Точка B:"/>
-            <Button Content="Задать" Width="75" Margin="10, 0, 0, 0" Click="InitPointBInput"/>
-        </StackPanel>
-        <TextBlock x:Name="PointBXCord" Text="X: "/>
-        <TextBlock x:Name="PointBYCord" Text="Y: " Margin="0, 0, 0, 10"/>
+    <StackPanel Background="Transparent">
+        <GroupBox Margin="10" Height="auto" Background="White">
+            <StackPanel>
+                <TextBlock Text=""/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock x:Name="APointHint" Text="Точка А:"/>
+                    <Button Content="Задать" Width="60" Margin="10, 0, 0, 0" Click="InitPointAInput"/>
+                </StackPanel>
+                <TextBlock x:Name="PointAXCord" Text="X: -"/>
+                <TextBlock x:Name="PointAYCord" Text="Y: -" Margin="0, 0, 0, 10"/>
 
-        <StackPanel Orientation="Horizontal">            
-            <TextBlock x:Name="CPointHint" Text="Точка C:"/>
-            <Button Content="Задать" Width="75" Margin="10, 0, 0, 0" Click="InitPointCInput"/>
-        </StackPanel>
-        <TextBlock x:Name="PointCXCord" Text="X: "/>
-        <TextBlock x:Name="PointCYCord" Text="Y: " Margin="0, 0, 0, 10"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock x:Name="BPointHint" Text="Точка B:"/>
+                    <Button Content="Задать" Width="60" Margin="10, 0, 0, 0" Click="InitPointBInput"/>
+                </StackPanel>
+                <TextBlock x:Name="PointBXCord" Text="X: -"/>
+                <TextBlock x:Name="PointBYCord" Text="Y: -" Margin="0, 0, 0, 10"/>
 
-        <Button x:Name="StartStudentInput" Height="50" Click="InitStudentCalculationsInput" Margin="5" IsEnabled="False">
-            <TextBlock Text="Ввести расчёты" TextWrapping="Wrap" TextAlignment="Center"/>
-        </Button>
-        <TextBlock x:Name="HaveStudentCalculationsTB" Text="Введите точки на карте" Margin="5" Foreground="Red" TextWrapping="Wrap"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock x:Name="CPointHint" Text="Точка C:"/>
+                    <Button Content="Задать" Width="60" Margin="10, 0, 0, 0" Click="InitPointCInput"/>
+                </StackPanel>
+                <TextBlock x:Name="PointCXCord" Text="X: -"/>
+                <TextBlock x:Name="PointCYCord" Text="Y: -" Margin="0, 0, 0, 10"/>
+
+                <Button x:Name="StartStudentInput" Height="50" Click="InitStudentCalculationsInput" Margin="5" IsEnabled="False">
+                    <TextBlock Text="Ввести расчёты" TextWrapping="Wrap" TextAlignment="Center"/>
+                </Button>
+                <TextBlock x:Name="HaveStudentCalculationsTB" Text="Введите точки на карте" Margin="5" Foreground="Red" TextWrapping="Wrap"/>
+            </StackPanel>
+        </GroupBox>
     </StackPanel>
 </Page>

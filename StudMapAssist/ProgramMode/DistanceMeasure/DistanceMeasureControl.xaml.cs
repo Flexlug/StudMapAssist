@@ -45,12 +45,12 @@ namespace StudMapAssist.ProgramMode.DistanceMeasure
         /// <summary>
         /// Первая точка, которая учавствует в измерении расстояний
         /// </summary>
-        private Point FirstPoint = new Point(double.MaxValue, double.MaxValue);
+        private Point markerFirstPoint = new Point(double.MaxValue, double.MaxValue);
 
         /// <summary>
         /// Вторая точка которая учавствует в измерении расстояний
         /// </summary>
-        private Point SecondPoint = new Point(double.MaxValue, double.MaxValue);
+        private Point markerSecondPoint = new Point(double.MaxValue, double.MaxValue);
 
 
 
@@ -146,6 +146,8 @@ namespace StudMapAssist.ProgramMode.DistanceMeasure
 
             rmbMenu = this.FindResource("rmbMenu") as ContextMenu;
             rmbMenu.PlacementTarget = mapWindow.MainPanel;
+
+            mapWindow.SetStatus("Включён режим: \"Измерение расстояний\"");
         }
 
         /// <summary>
@@ -216,15 +218,17 @@ namespace StudMapAssist.ProgramMode.DistanceMeasure
         {
             if (FirstPointWaiting)
             {
-                FirstPoint = mapWindow.GetPositionOnMap();
+                markerFirstPoint = mapWindow.GetPositionOnMap();
                 FirstPointWaiting = false;
 
-                FirstPointXCordView.Text = $"X: {FirstPoint.X:f2}";
-                FirstPointYCordView.Text = $"Y: {FirstPoint.Y:f2}";
+                Point squareCordFirstPoint = DirectGeodTask.DirectGeodCalculations.PixelsToSquareCords(markerFirstPoint);
 
-                mapWindow.SetStatus($"Первая точка установлена: X:{FirstPoint.X:f2} Y:{FirstPoint.Y:f2}");
+                FirstPointXCordView.Text = $"X: {squareCordFirstPoint.X:f2}";
+                FirstPointYCordView.Text = $"Y: {squareCordFirstPoint.Y:f2}";
 
-                firstPointMarker.SetLocation(FirstPoint);
+                mapWindow.SetStatus($"Первая точка установлена: X:{squareCordFirstPoint.X:f2} Y:{squareCordFirstPoint.Y:f2}");
+
+                firstPointMarker.SetLocation(markerFirstPoint);
                 firstPointMarker.Show();
 
                 mapWindow.screenCross.Hide();
@@ -232,25 +236,27 @@ namespace StudMapAssist.ProgramMode.DistanceMeasure
 
             if (SecondPointWaiting)
             {
-                SecondPoint = mapWindow.GetPositionOnMap();
+                markerSecondPoint = mapWindow.GetPositionOnMap();
                 SecondPointWaiting = false;
 
-                SecondPointXCordView.Text = $"X: {SecondPoint.X:f2}";
-                SecondPointYCordView.Text = $"Y: {SecondPoint.Y:f2}";
+                Point squareCordSecondPoint = DirectGeodTask.DirectGeodCalculations.PixelsToSquareCords(markerSecondPoint);
 
-                mapWindow.SetStatus($"Вторая точка установлена: X:{SecondPoint.X:f2} Y:{SecondPoint.Y:f2}");
+                SecondPointXCordView.Text = $"X: {squareCordSecondPoint.X:f2}";
+                SecondPointYCordView.Text = $"Y: {squareCordSecondPoint.Y:f2}";
 
-                secondPointMarker.SetLocation(SecondPoint);
+                mapWindow.SetStatus($"Вторая точка установлена: X:{squareCordSecondPoint.X:f2} Y:{squareCordSecondPoint.Y:f2}");
+
+                secondPointMarker.SetLocation(markerSecondPoint);
                 secondPointMarker.Show();
 
                 mapWindow.screenCross.Hide();
             }
 
             // Если обе точки были заданы, то можно уже рассчитывать расстояние
-            if (FirstPoint.X != double.MaxValue && SecondPoint.X != double.MaxValue)
+            if (markerFirstPoint.X != double.MaxValue && markerSecondPoint.X != double.MaxValue)
             {
-                DistanceView.Text = $"Расстояние: {GeodCalculations.CalcLength(FirstPoint, SecondPoint):f2}m";
-                distanceViewer.SetPoints(FirstPoint, SecondPoint);
+                DistanceView.Text = $"Растояние: {GeodCalculations.CalcLength(markerFirstPoint, markerSecondPoint):f2}m";
+                distanceViewer.SetPoints(markerFirstPoint, markerSecondPoint);
                 distanceViewer.Show();
             }
         }
@@ -271,15 +277,21 @@ namespace StudMapAssist.ProgramMode.DistanceMeasure
 
         private void ClearPoints(object sender, RoutedEventArgs e)
         {
-            FirstPoint.X = double.MaxValue;
-            FirstPoint.Y = double.MaxValue;
-            SecondPoint.X = double.MaxValue;
-            SecondPoint.Y = double.MaxValue;
+            markerFirstPoint.X = double.MaxValue;
+            markerFirstPoint.Y = double.MaxValue;
+            markerSecondPoint.X = double.MaxValue;
+            markerSecondPoint.Y = double.MaxValue;
             firstPointMarker.Hide();
             secondPointMarker.Hide();
             distanceViewer.Hide();
 
-            mapWindow.SetStatus("Точки убраны!");
+            FirstPointXCordView.Text = "X: -";
+            FirstPointYCordView.Text = "Y: -";
+            SecondPointXCordView.Text = "X: -";
+            SecondPointYCordView.Text = "Y: -";
+            DistanceView.Text = "Расстояние: ";
+
+            mapWindow.SetStatus("Точки очищены");
         }
 
         /// <summary>

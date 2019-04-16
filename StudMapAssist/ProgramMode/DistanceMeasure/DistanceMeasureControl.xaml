@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:StudMapAssist.ProgramMode.DistanceMeasure"
-      Background="White"
+      Background="Transparent"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="150"
       Title="DistanceMeasureControl">
@@ -17,16 +17,32 @@
             <MenuItem Header="Очистить точки" Click="ClearPoints"/>
         </ContextMenu>
     </Page.Resources>
-    
-    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-        <Button x:Name="FirstPointButton" Content="Задать первую точку" Click="InitFirstPointInput"/>
-        <TextBlock x:Name="FirstPointXCordView" Text="X: -"/>
-        <TextBlock x:Name="FirstPointYCordView" Text="Y: -"/>
 
-        <Button x:Name="SecondPointButton" Margin="0, 10, 0, 0" Content="Задать вторую точку" Click="InitSecondPointInput"/>
-        <TextBlock x:Name="SecondPointXCordView" Text="X: -"/>
-        <TextBlock x:Name="SecondPointYCordView" Text="Y: -"/>
+    <StackPanel Background="Transparent">
+        <GroupBox x:Name="mainGroupBox" Background="White" Margin="10">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="5">
+                <Button x:Name="FirstPointButton" Click="InitFirstPointInput" Margin="5" Width="90">
+                    <TextBlock FontSize="12" TextAlignment="Center">
+                        <Run>Задать первую</Run>
+                        <LineBreak/>
+                        <Run>точку</Run>
+                    </TextBlock>
+                </Button>
+                <TextBlock x:Name="FirstPointXCordView" Margin="5, 0, 0, 0" Text="X: -"/>
+                <TextBlock x:Name="FirstPointYCordView" Margin="5, 0, 0, 0" Text="Y: -"/>
 
-        <TextBlock x:Name="DistanceView" Text="Расстояние: " Margin="0, 10, 0, 0"/>
-     </StackPanel>
+                <Button x:Name="SecondPointButton" Margin="0, 10, 0, 0" Click="InitSecondPointInput" Width="90">
+                    <TextBlock FontSize="12" TextAlignment="Center">
+                        <Run>Задать вторую</Run>
+                        <LineBreak/>
+                        <Run>точку</Run>
+                    </TextBlock>
+                </Button>
+                <TextBlock x:Name="SecondPointXCordView" Margin="5, 0, 0, 0" Text="X: -"/>
+                <TextBlock x:Name="SecondPointYCordView" Margin="5, 0, 0, 0" Text="Y: -"/>
+
+                <TextBlock x:Name="DistanceView" Text="Расстояние: " Margin="5, 10, 0, 0"/>
+            </StackPanel>
+        </GroupBox> 
+    </StackPanel>
 </Page>

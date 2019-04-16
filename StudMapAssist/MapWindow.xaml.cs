@@ -89,7 +89,7 @@ namespace StudMapAssist
 
 
             ScaleTransform mapScale = GetMapScale();
-            double scaleDelta = 0;
+            double scaleDelta;
 
             if (e.Delta > 0)
             {
@@ -136,9 +136,14 @@ namespace StudMapAssist
             }
         }
 
+        /// <summary>
+        /// For debug. Отображает координаты точки под курсором в пикселях
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            MessageBox.Show($"{GetPositionOnPanel().X}  {GetPositionOnPanel().Y}");
+            //MessageBox.Show($"{GetPositionOnPanel().X}  {GetPositionOnPanel().Y}");
         }
 
         private void MapViewer_MouseMove(object sender, MouseEventArgs e)

@@ -13,7 +13,7 @@ namespace StudMapAssist.ProgramMode.DistanceMeasure
         public static double PixelScale = 1.2698412698412698412698412698413;
 
         /// <summary>
-        /// Вычисляет расстояние между двумя точками. Точки должны быть в пиксельных координатах
+        /// Вычисляет растояние между двумя точками. Точки должны быть в пиксельных координатах
         /// </summary>
         /// <param name="fstPoint">Первая точка [PX]</param>
         /// <param name="sndPoint">Вторая точка [PX]</param>
@@ -24,7 +24,7 @@ namespace StudMapAssist.ProgramMode.DistanceMeasure
             double distanceX = fstPoint.X - sndPoint.X,
                    distanceY = fstPoint.Y - sndPoint.Y;
 
-            // Вычисляем расстояние между точками (в пикселях)
+            // Вычисляем растояние между точками (в пикселях)
             double distanceInPixels = Math.Sqrt(distanceX * distanceX + distanceY * distanceY);
 
             // Переводим пиксели в метры, умножая полученное значение на MapScale;

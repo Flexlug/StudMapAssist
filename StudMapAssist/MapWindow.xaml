@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StudMapAssist"
         mc:Ignorable="d"
-        Title="StudMapAssist" Height="450" Width="800" KeyDown="Window_KeyDown" Loaded="Window_Loaded" Closing="Window_Closing">
+        Title="StudMapAssist" Background="WhiteSmoke" MinHeight="450" MinWidth="800" KeyDown="Window_KeyDown" Loaded="Window_Loaded" Closing="Window_Closing">
     
     <Grid>
         <Grid.ColumnDefinitions>
@@ -18,7 +18,7 @@
             <RowDefinition MaxHeight="40"/>
         </Grid.RowDefinitions>
 
-        <Frame x:Name="CurrentModeControl" Grid.Column="0" Panel.ZIndex="10" NavigationUIVisibility="Hidden">
+        <Frame x:Name="CurrentModeControl" Grid.Column="0" Panel.ZIndex="10" NavigationUIVisibility="Hidden" Background="LightGray">
             
         </Frame>
 
@@ -29,7 +29,7 @@
         </Canvas>
 
 
-        <Grid Grid.Column="2" Grid.Row="1" Background="WhiteSmoke">
+        <Grid Grid.Column="2" Grid.Row="1" Background="White">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -38,7 +38,7 @@
             <Button x:Name="CenterMap" Panel.ZIndex="3" Content="N" HorizontalAlignment="Left" Click="CenterMap_Click" Width="25" Height="25" Margin="4"/>
             <TextBlock x:Name="ProgramStatus" Text="Waiting for commands..." HorizontalAlignment="Left" VerticalAlignment="Center" Margin="40, 0, 0, 0"/>
 
-            <StackPanel x:Name="StatusPanel" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
+            <StackPanel x:Name="StatusPanel" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal" >
                 <TextBlock x:Name="XCordView" Text="X:"/>
                 <TextBlock x:Name="YCordView" Text="Y:"/>
             </StackPanel>

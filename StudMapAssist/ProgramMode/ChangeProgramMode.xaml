@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StudMapAssist.ProgramMode"
         mc:Ignorable="d"
-        Title="Изменение режима" Height="300" Width="600">
+        Title="Изменение режима" MinHeight="300" MinWidth="600">
     
     <Grid>
         <Grid.ColumnDefinitions>
@@ -25,7 +25,7 @@
             </Grid.RowDefinitions>
 
             <Image x:Name="ModePreview" Grid.Row="0"/>
-            <TextBlock x:Name="ModeDescription" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
+            <TextBlock x:Name="ModeDescription" Grid.Row="1" FontSize="25" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
         </Grid>
         
     </Grid>

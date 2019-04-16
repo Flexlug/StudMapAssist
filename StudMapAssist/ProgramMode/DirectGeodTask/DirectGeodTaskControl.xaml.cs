@@ -222,6 +222,8 @@ namespace StudMapAssist.ProgramMode.DirectGeodTask
 
             rmbMenu = this.FindResource("rmbMenu") as ContextMenu;
             rmbMenu.PlacementTarget = mapWindow.MainPanel;
+
+            mapWindow.SetStatus("Включён режим: \"Прямая геодезическая задача\"");
         }
 
         /// <summary>
@@ -345,7 +347,7 @@ namespace StudMapAssist.ProgramMode.DirectGeodTask
                 BCDistanceLine.Show();
                 CADistanceLine.Show();
 
-                // Включим возможность ввести собственные рассчёты
+                // Включим возможность ввести собственные расчёты
                 HaveStudentCalculationsTB.Text = "Точки введены";
                 HaveStudentCalculationsTB.Foreground = Brushes.Green;
                 StartStudentInput.IsEnabled = true;
@@ -397,9 +399,18 @@ namespace StudMapAssist.ProgramMode.DirectGeodTask
             BCDistanceLine.Hide();
             CADistanceLine.Hide();
 
+            PointAXCord.Text = "X: -";
+            PointAYCord.Text = "Y: -";
+            PointBXCord.Text = "X: -";
+            PointBYCord.Text = "Y: -";
+            PointCXCord.Text = "X: -";
+            PointCYCord.Text = "Y: -";
+
             HaveStudentCalculationsTB.Text = "Введите точки на карте";
             HaveStudentCalculationsTB.Foreground = Brushes.Red;
             StartStudentInput.IsEnabled = false;
+
+            mapWindow.SetStatus("Точки очищены");
         }
 
         private void InitStudentCalculationsInput(object sender, RoutedEventArgs e)

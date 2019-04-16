@@ -645,12 +645,12 @@ namespace StudMapAssist.ProgramMode.DirectGeodTask
                     }
                 });
 
-                geodDiff.DiffX1.Text = $"{MeasuredX1 - CalcedX1}";
-                geodDiff.DiffX2.Text = $"{MeasuredX2 - CalcedX2}";
-                geodDiff.DiffX3.Text = $"{MeasuredX3 - CalcedX3}";
-                geodDiff.DiffY1.Text = $"{MeasuredY1 - CalcedY1}";
-                geodDiff.DiffY2.Text = $"{MeasuredY2 - CalcedY2}";
-                geodDiff.DiffY3.Text = $"{MeasuredY3 - CalcedY3}";
+                geodDiff.DiffX1.Text = $"{(int)(MeasuredX1 - mapCalcedX1)}";
+                geodDiff.DiffX2.Text = $"{(int)(MeasuredX2 - mapCalcedX2)}";
+                geodDiff.DiffX3.Text = $"{(int)(MeasuredX3 - mapCalcedX3)}";
+                geodDiff.DiffY1.Text = $"{(int)(MeasuredY1 - mapCalcedY1)}";
+                geodDiff.DiffY2.Text = $"{(int)(MeasuredY2 - mapCalcedY2)}";
+                geodDiff.DiffY3.Text = $"{(int)(MeasuredY3 - mapCalcedY3)}";
 
                 geodDiff.Show();
             }
